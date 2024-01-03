@@ -17,6 +17,7 @@
 #if !arch(arm) && !arch(i386)
 
 import Combine
+import SwiftUI
 
 /// A view model for the SwiftUI sign-in button publishing changes for the
 /// button scheme, style, and state.
@@ -25,6 +26,7 @@ public class GoogleSignInButtonViewModel: ObservableObject {
   @Published public var scheme: GoogleSignInButtonColorScheme
   @Published public var style: GoogleSignInButtonStyle
   @Published public var state: GoogleSignInButtonState
+  @Published public var textAligment: Alignment
 
   /// A computed property providing the button's size, colors, corner radius,
   /// and shadow based on this current view model's `SignInButtonStyle`.
@@ -39,15 +41,21 @@ public class GoogleSignInButtonViewModel: ObservableObject {
   /// `.standard`.
   /// - parameter state: An instance of `GoogleSignInButtonState`. Defaults to
   /// `.normal`.
+  /// - parameter textAligment: An instance of `Alignment`. Defaults to
+  /// `.leading`.
+
   @available(iOS 13.0, macOS 10.15, *)
   public init(
     scheme: GoogleSignInButtonColorScheme = .light,
     style: GoogleSignInButtonStyle = .standard,
-    state: GoogleSignInButtonState = .normal) {
+    state: GoogleSignInButtonState = .normal,
+    textAligment: Alignment = .leading
+  ) {
       self.scheme = scheme
       self.style = style
       self.state = state
-  }
+      self.textAligment = textAligment
+    }
 }
 
 #endif // !arch(arm) && !arch(i386)

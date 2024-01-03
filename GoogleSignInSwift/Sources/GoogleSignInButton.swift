@@ -98,7 +98,7 @@ public struct GoogleSignInButton: View {
             .frame(
               width: viewModel.style.widthForButtonText,
               height: buttonHeight,
-              alignment: .leading
+              alignment: viewModel.textAligment
             )
           Spacer()
         }
